@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Fundamentals of Computing - Dev Team</title>
+  <style>
+    /* Profile layout for side-by-side image and bio text */
+    .profile-container {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-top: 1rem;
+    }
+    .profile-img {
+      width: 180px;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-lg);
+      flex-shrink: 0;
+    }
+    @media (max-width: 600px) {
+      .profile-container {
+        flex-direction: column;
+      }
+      .profile-img {
+        width: 100%;
+        max-width: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Fundamentals of Computing</h1>
+  </header>
+
+  <div class="container">
+
+    <nav class="sidebar">
+      <ul>
+        <li><a href="index.html">Course</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="Concepts.html">Concepts</a></li>
+        <li><a href="Databases.html">Databases</a></li>
+        <li><a href="Documentation.html">Documentation</a></li>
+        <li><a href="Dev Team.html" class="active">Dev Team</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <h2>About Me</h2>
+      
+      <div class="profile-container">
+        <img src="kieran.jpg" alt="Dr. Kieran Ryan" class="profile-img">
+        <p>
+          Kieran Ryan holds a PhD in Management Information Systems from KeimYung University in South Korea. He completed an MBA at National Tsing Hua University in Taiwan, his undergraduate degree is in Computer Science. He teaches Management Information Systems courses to the business students and Fundamentals of Computing and Database courses at the University of Belize. Dr. Ryan currently conducts research on information system success from a developing country perspective. His service work is making programing classes available at all secondary schools in Belize[cite: 6].
+        </p>
+      </div>
+    </main>
+
+    <div class="spacer"></div>
+  </div>
+
+  <footer>
+    @ Powered by UB
+  </footer>
+
+</body>
+</html>
