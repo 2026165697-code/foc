@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student 3 - Concepts & Projects</title>
+</head>
+<body>
+
+  <h1>CMPS1134 - Student 3 Interactive Projects</h1>
+
+  <h2>1. Logic Gates & Flip-Flop Demonstration</h2>
+
+  <h3>AND Gate</h3>
+  <img src="AND_gate.png" alt="AND Gate" width="300"><br><br>
+  Input A:
+  <select id="andA" onchange="calcAND()">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br>
+  Input B:
+  <select id="andB" onchange="calcAND()">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select>
+  <p id="andResult">Output: 0</p>
+
+  <h3>OR Gate</h3>
+  <img src="OR_gate.png" alt="OR Gate" width="300"><br><br>
+  Input A:
+  <select id="orA" onchange="calcOR()">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br>
+  Input B:
+  <select id="orB" onchange="calcOR()">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select>
+  <p id="orResult">Output: 0</p>
+
+  <h3>XOR Gate</h3>
+  <img src="XOR gate.webp" alt="XOR Gate" width="300"><br><br>
+  Input A:
+  <select id="xorA" onchange="calcXOR()">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br>
+  Input B:
+  <select id="xorB" onchange="calcXOR()">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select>
+  <p id="xorResult">Output: 0</p>
+
+  <!-- NOT GATE -->
+  <h3>NOT Gate</h3>
+  <img src="NOT_gate.png" alt="NOT Gate" width="300"><br><br>
+  Input A:
+  <select id="notA" onchange="calcNOT()">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select>
+  <p id="notResult">Output: 1</p>
+
+  <!-- SR FLIP-FLOP -->
+  <h3>SR Flip-Flop Circuit</h3>
+  <img src="FLIP%20FLOP.png" alt="Flip-Flop" width="300"><br><br>
+  <button onclick="setFlipFlop(1, 0)">Set (S=1, R=0)</button>
+  <button onclick="setFlipFlop(0, 1)">Reset (S=0, R=1)</button>
+  <button onclick="setFlipFlop(0, 0)">Hold (S=0, R=0)</button>
+  <p id="ffResult">Stored State Q: 0</p>
+
+  <hr>
+
+  <!-- SECTION 2: BMI CALCULATOR -->
+  <h2>2. BMI Calculator</h2>
+  Weight (kg): <input type="number" id="weight"><br>
+  Height (cm): <input type="number" id="height"><br>
+  <button onclick="calculateBMI()">Calculate BMI</button>
+  <p id="bmiResult">BMI Value: -</p>
+
+  <hr>
+
+  <!-- SECTION 3: BINARY CONVERSIONS & NOTATION -->
+  <h2>3. Binary Concepts</h2>
+
+  <h3>Binary Notation</h3>
+  <img src="Binary%20notation.png" alt="Binary Notation" width="400"><br>
+
+  <h3>Binary to Base 10 Conversion</h3>
+  <img src="Binary to base ten conversion.jpg" alt="Binary to Base 10" width="400"><br><br>
+  4-Bit Binary: <input type="text" id="binaryInput" maxlength="4"><br>
+  <button onclick="convertBinary()">Convert</button>
+  <p id="binaryResult">Base 10 Value: -</p>
+
+  <h3>Binary Addition</h3>
+  <img src="Binary addition.jpg" alt="Binary Addition" width="400">
+
+  <script>
+    function calcAND() {
+      var a = parseInt(document.getElementById('andA').value);
+      var b = parseInt(document.getElementById('andB').value);
+      document.getElementById('andResult').innerText = "Output: " + (a && b);
+    }
+
+    function calcOR() {
+      var a = parseInt(document.getElementById('orA').value);
+      var b = parseInt(document.getElementById('orB').value);
+      document.getElementById('orResult').innerText = "Output: " + (a || b);
+    }
+
+    function calcXOR() {
+      var a = parseInt(document.getElementById('xorA').value);
+      var b = parseInt(document.getElementById('xorB').value);
+      document.getElementById('xorResult').innerText = "Output: " + (a ^ b);
+    }
+
+    function calcNOT() {
+      var a = parseInt(document.getElementById('notA').value);
+      document.getElementById('notResult').innerText = "Output: " + (a ? 0 : 1);
+    }
+
+    var flipFlopState = 0;
+    function setFlipFlop(s, r) {
+      if (s === 1 && r === 0) {
+        flipFlopState = 1;
+      } else if (s === 0 && r === 1) {
+        flipFlopState = 0;
+      }
+      document.getElementById('ffResult').innerText = "Stored State Q: " + flipFlopState;
+    }
+
+    function calculateBMI() {
+      var weight = parseFloat(document.getElementById('weight').value);
+      var height = parseFloat(document.getElementById('height').value) / 100;
+      if (weight > 0 && height > 0) {
+        var bmi = (weight / (height * height)).toFixed(2);
+        document.getElementById('bmiResult').innerText = "BMI Value: " + bmi;
+      } else {
+        document.getElementById('bmiResult').innerText = "BMI Value: Please enter valid numbers";
+      }
+    }
+
+    function convertBinary() {
+      var input = document.getElementById('binaryInput').value.trim();
+      if (/^[01]{1,4}$/.test(input)) {
+        var decimal = parseInt(input, 2);
+        document.getElementById('binaryResult').innerText = "Base 10 Value: " + decimal;
+      } else {
+        document.getElementById('binaryResult').innerText = "Base 10 Value: Invalid binary input";
+      }
+    }
+  </script>
+
+</body>
+</html>
